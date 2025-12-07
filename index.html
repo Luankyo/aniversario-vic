@@ -80,6 +80,8 @@ btnNao.addEventListener("touchstart", (e) => {
 btnSim.addEventListener("click", () => {
     pergunta.style.display = "none";
     document.getElementById("principal").style.display = "flex";
+    const som = document.getElementById("somFogos");
+    som.play();
     criarEmojis();
 });
 
@@ -99,3 +101,4 @@ function criarEmojis() {
 }
 
 </script>
+
