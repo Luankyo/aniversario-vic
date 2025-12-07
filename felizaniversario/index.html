@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Feliz Aniversário</title>
+</head>
+<body>
+   <!-- Tela da pergunta -->
+<div id="pergunta">
+    <h1>Você me ama?</h1>
+
+    <!-- Botão SIM centralizado -->
+    <button id="sim">Sim, muito!</button>
+
+    <!-- Botão NÃO inicia ao lado, mas fora do fluxo -->
+    <button id="nao">Não</button>
+</div>
+
+  <!-- Tela principal -->
+  <div id="principal">
+      <img id="foto" src="/imagem/linda.png" alt="minha deusa" />
+      <p id="mensagem">Oi amor, espero que esteja bem<br>. hoje é seu dia né, o dia que vc falou que odeia, que não gosta do seu aniversário mas aqui estou eu, não pra te dar uma festa mas esse presente bobo que eu fiquei das 6:00 da manhã de hoje até as 10:00 fazendo essa brincadeira aqui kkkkkkkkkk<br><br> parece que não mais dá trabalho fazer isso aqui, ainda mais eu que perdi a prática, faz tempo que eu não faço site aí infelizmente perdi a prática, mas pra você é por você eu faço tudo e você sabe disso<br><br> você é o amor da minha vida, eu te amo tanto Victoria, tanto, vc não sabe o quanto, e isso é muito real quando eu me pego sentindo sua falta quando vc fica uns dias sem mandar mensagem pra mim, quando vc me dá um chá de sumiço… se bem que você poderia me dar outro tipo de chá né, esse aí já tá bom, precisa mais não 😂<br><br>
+
+Quando a gente fica em call vc vendo eu jogar ou assistindo algo comigo por mais que o negócio de assistir foi só uma vez pra mim foi muito especial, amo quando eu escuto sua voz meiga, doce, eu amo ouvir sua voz, esses momentos são os que eu mais amo, são os momentos que eu mais sou feliz com vc, é aonde eu sinto que mesmo tão distante ao mesmo tempo me sinto tão perto de você.<br><br>
+
+Escrevendo isso agora eu confesso que to com os olhos cheio d’água porque quando eu to pensando em você e me declarando eu não consigo não chorar,o amor que eu sinto por você, esse sentimento, essa paixão é mais forte do que eu, eu não consigo esconder o tanto que eu amo você que quando eu to falando de você ou pensando em vc eu fico assim, todo bobo, mas enfim 🥹<br><br>
+
+Em chamada, por mensagem ou pessoalmente eu sou +feliz com você meu amor, mesmo quando vc só me manda um bom dia e fala uma ou duas palavras ou por estar ocupada ou na maior parte do tempo hibernando… Digo dormindo, É inegável que eu sinto sua falta quando você some, e você sabe disso, mas eu sei que isso é só uma fase desse webnamoro desgraçado, logo logo a gente vai estar um do lado do outro como a gente sempre quis, pra gente dar muitos beijinhos, carinhos ficar de dengo e outras coisas a mais 😏 ui seqsu 🫦.<br><br>
+
+Eu já falei e não canso de repetir que vc é o amor da minha vida, toda vez que eu penso na gente eu só penso em como esse nosso amor um pelo outro é capaz de construir muitas coisas juntos além de uma família linda que eu sonho em ter com você, eu quero fazer vc a mulher mais feliz desse mundo, quero usar a famosa skin de velho com você pra gente ser 2 velhinhos chatos<br><br>
+
+Eu te amo Victoria te amo com toda minha alma e meu coração ❤ hoje é seu aniversário mais vocé é meu presente, obrigado por me escolher e me fazer feliz.<br><br>
+
+Feliz aniversário, aproveite seu dia, porque hoje eu também vou celebrar e agradecer a Deus por eu ter conhecida a mulher mais bonita e tão especial que nasceu nesse dia de hoje e que eu consegui conhecer<br><br>
+
+Com amor: Luan ❤</p>
+  </div>
+
+
+
+<script>
+const btnNao = document.getElementById("nao");
+const btnSim = document.getElementById("sim");
+const pergunta = document.getElementById("pergunta");
+
+// posição inicial ao lado do Sim
+function posicionarInicial() {
+    const simRect = btnSim.getBoundingClientRect();
+    btnNao.style.top = `${simRect.top}px`;
+    btnNao.style.left = `${simRect.right + 20}px`;
+}
+posicionarInicial();
+
+// Move o botão NÃO aleatoriamente
+function moverBotaoNao() {
+    const parentRect = pergunta.getBoundingClientRect();
+    const btnRect = btnNao.getBoundingClientRect();
+
+    const padding = 10;
+    const maxX = parentRect.width - btnRect.width - padding;
+    const maxY = parentRect.height - btnRect.height - padding;
+
+    const left = padding + Math.random() * maxX;
+    const top = padding + Math.random() * maxY;
+
+    btnNao.style.left = `${left}px`;
+    btnNao.style.top = `${top}px`;
+}
+
+// Eventos PC e celular
+btnNao.addEventListener("mouseover", moverBotaoNao);
+btnNao.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moverBotaoNao();
+});
+
+// Botão SIM
+btnSim.addEventListener("click", () => {
+    pergunta.style.display = "none";
+    document.getElementById("principal").style.display = "flex";
+    criarEmojis();
+});
+
+// Emojis
+function criarEmojis() {
+    const emojis = ["🎉","🎂","🎈","💖","✨"];
+    const interval = setInterval(() => {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        emoji.style.left = Math.random()*window.innerWidth + "px";
+        emoji.style.bottom = "0px";
+        document.body.appendChild(emoji);
+        setTimeout(()=>emoji.remove(),3000);
+    }, 400);
+    setTimeout(()=>clearInterval(interval),8000);
+}
+</script>
